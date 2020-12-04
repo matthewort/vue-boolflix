@@ -44,25 +44,3 @@ var app = new Vue({
     }
   }
 });
-
-// var app = new Vue({
-//   el: '#app',
-//   data: {
-//     film: []
-//   },
-//   mounted: function () {
-//     axios.get(url)
-//     .then((response) => {
-//     const content = response.data.results;
-//     this.film = content
-//     });
-//   },
-//   methods: {
-//     greet: function () {
-//       alert('eey');
-//     },
-//     // addfilm: function () {
-//     //
-//     // }
-//   }
-// });
