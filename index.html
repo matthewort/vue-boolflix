@@ -24,61 +24,82 @@
 
         <div v-for="poster in film">
 
-          <div class="list">
-          <p>
-          {{poster.title}}
-          <br>
-          {{poster.original_title}}
-          <!-- {{getScore(poster.vote_average)}} -->
-          <!-- {{poster.vote_average}} -->
-          <div v-if="poster.vote_average === 0">
-          <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-          </div>
-          <div v-else-if="poster.vote_average > 0.4 && poster.vote_average < 2">
-          <i class="fas fa-star"></i></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-          </div>
-          <div v-else-if="poster.vote_average > 2.4 && poster.vote_average < 4 || poster.vote_average > 3.4 && poster.vote_average < 5">
-          <i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-          </div>
-          <div v-else-if="poster.vote_average > 4.4 && poster.vote_average < 6 || poster.vote_average > 5.4 && poster.vote_average < 7">
-          <i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-          </div>
-          <div v-else-if="poster.vote_average > 6.4 && poster.vote_average < 8 || poster.vote_average > 7.4 && poster.vote_average < 9">
-          <i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-          </div>
-          <div v-else-if="poster.vote_average > 8.4 && poster.vote_average < 10 || poster.vote_average > 9.4 && poster.vote_average <= 10">
-          <i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <!-- {{poster.original_language}} -->
-          <div v-if="poster.original_language === 'en'">
-          <img id="flag" src="file:///C:/Users/Matt/AppData/Local/Temp/united-kingdom.svg" alt="">
-          </div>
-          <div v-if="poster.original_language === 'ja'">
-          <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197604.svg" alt="">
-          </div>
-          <div v-if="poster.original_language === 'de'">
-          <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197571.svg" alt="">
-          </div>
-          <div v-if="poster.original_language === 'fr'">
-          <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197560.svg" alt="">
-          </div>
-          <div v-if="poster.original_language === 'pt'">
-          <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197463.svg" alt="">
-          </div>
-          <div v-if="poster.original_language === 'es'">
-          <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197593.svg" alt="">
-          </div>
-          <div v-if="poster.original_language === 'ru'">
-          <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197408.svg" alt="">
-          </div>
-          <div v-if="poster.original_language === 'ko'">
-          <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197582.svg" alt="">
-          </div>
+          <div class="films">
+            <p>
+            {{poster.title}}
+            <br>
+            {{poster.original_title}}
+            <!-- {{getScore(poster.vote_average)}} -->
+            <!-- {{poster.vote_average}} -->
+              <div>
+              <i v-for="(star, index) in 5" class="fa-star" :class="(index < Math.round(poster.vote_average / 2))?'fas':'far'"></i>
+              </div>
 
-          </p>
+              <!-- <div v-if="poster.vote_average === 0">
+              <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+              </div> -->
+
+              <!-- <div v-else-if="poster.vote_average > 0.4 && poster.vote_average < 2">
+              <i class="fas fa-star"></i></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+              </div>
+
+              <div v-else-if="poster.vote_average > 2.4 && poster.vote_average < 4 || poster.vote_average > 3.4 && poster.vote_average < 5">
+              <i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+              </div>
+
+              <div v-else-if="poster.vote_average > 4.4 && poster.vote_average < 6 || poster.vote_average > 5.4 && poster.vote_average < 7">
+              <i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+              </div>
+
+              <div v-else-if="poster.vote_average > 6.4 && poster.vote_average < 8 || poster.vote_average > 7.4 && poster.vote_average < 9">
+              <i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+              </div>
+
+              <div v-else-if="poster.vote_average > 8.4 && poster.vote_average < 10 || poster.vote_average > 9.4 && poster.vote_average <= 10">
+              <i class="fas fa-star"></i></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div> -->
+
+              <!-- {{poster.original_language}} -->
+              <div v-if="poster.original_language === 'en'">
+              <img id="flag" src="file:///C:/Users/Matt/AppData/Local/Temp/united-kingdom.svg" alt="">
+              </div>
+
+              <div v-if="poster.original_language === 'ja'">
+              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197604.svg" alt="">
+              </div>
+
+              <div v-if="poster.original_language === 'de'">
+              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197571.svg" alt="">
+              </div>
+
+              <div v-if="poster.original_language === 'fr'">
+              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197560.svg" alt="">
+              </div>
+
+              <div v-if="poster.original_language === 'pt'">
+              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197463.svg" alt="">
+              </div>
+
+              <div v-if="poster.original_language === 'es'">
+              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197593.svg" alt="">
+              </div>
+
+              <div v-if="poster.original_language === 'ru'">
+              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197408.svg" alt="">
+              </div>
+
+              <div v-if="poster.original_language === 'ko'">
+              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197582.svg" alt="">
+              </div>
+
+            </p>
           </div>
 
         </div>
+
+        <!-- <div v-for="posterdue in tvseries">
+
+        </div> -->
 
       </div>
     </div>

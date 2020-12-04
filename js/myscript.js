@@ -6,13 +6,9 @@
 // Allarghiamo poi la ricerca anche alle serie tv. Con la stessa azione di ricerca dovremo prendere sia i film che corrispondono alla query, sia le serie tv, stando attenti ad avere alla fine dei valori simili (le serie e i film hanno campi nel JSON di risposta diversi, simili ma non sempre identici)
 
 
+const film = 'https://api.themoviedb.org/3/search/movie?api_key=adb9c0293cfa47b8f7f8199da349031d&language=it-IT&query=';
 
-const dischi = 'https://flynn.boolean.careers/exercises/api/array/music';
-// const email = 'https://flynn.boolean.careers/exercises/api/random/mail';
-
-var mioInput = '';
-const url = 'https://api.themoviedb.org/3/search/movie?api_key=adb9c0293cfa47b8f7f8199da349031d&language=it-IT&query=';
-let score = '0.929304045';
+const series = 'https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&language=it_IT&query=';
 
 var app = new Vue({
   el: '#app',
@@ -21,10 +17,14 @@ var app = new Vue({
     message: ''
   },
   methods: {
-    greet: function () {
-      alert('eey');
-    },
     addfilm: function () {
+      axios.get(film + this.message)
+      .then((response) => {
+      const content = response.data.results;
+      this.film = content
+      });
+    },
+    addseries: function (val) {
       axios.get(url + this.message)
       .then((response) => {
       const content = response.data.results;
