@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js "></script>
+  </head>
+  <body>
+
+    <div id="app">
+      <nav class="navleft">
+        <h1>BOOLFLIX</h1>
+      </nav>
+
+      <nav class="navright">
+        <input class="searchbar" v-model="message" @keyup.enter="addfilm" placeholder="Search Film">
+        <i class="fas fa-search" @click="addfilm"></i>
+      </nav>
+      <div class="container">
+
+
+        <div v-for="poster in film">
+
+          <div class="list">
+          <p>
+          {{poster.title}}
+          <br>
+          {{poster.original_title}}
+          <!-- {{getScore(poster.vote_average)}} -->
+          <!-- {{poster.vote_average}} -->
+          <div v-if="poster.vote_average === 0">
+          0
+          </div>
+          <div v-else-if="poster.vote_average > 0.4 && poster.vote_average < 2">
+          1
+          </div>
+          <div v-else-if="poster.vote_average > 2.4 && poster.vote_average < 4 || poster.vote_average > 3.4 && poster.vote_average < 5">
+          2
+          </div>
+          <div v-else-if="poster.vote_average > 4.4 && poster.vote_average < 6 || poster.vote_average > 5.4 && poster.vote_average < 7">
+          3
+          </div>
+          <div v-else-if="poster.vote_average > 6.4 && poster.vote_average < 8 || poster.vote_average > 7.4 && poster.vote_average < 9">
+          4
+          </div>
+          <div v-else-if="poster.vote_average > 8.4 && poster.vote_average < 10 || poster.vote_average > 9.4 && poster.vote_average <= 10">
+          5
+          </div>
+
+
+          {{poster.original_language}}
+          </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <script src="js/myscript.js"></script>
+  </body>
+</html>
