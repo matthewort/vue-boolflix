@@ -14,23 +14,29 @@ var app = new Vue({
   el: '#app',
   data: {
     film: [],
+    series: [],
     message: ''
   },
   methods: {
     addfilm: function () {
       axios.get(film + this.message)
       .then((response) => {
-      const content = response.data.results;
-      this.film = content
+      const filmcontent = response.data.results;
+      this.film = filmcontent
       });
     },
-    addseries: function (val) {
-      axios.get(url + this.message)
+    addseries: function () {
+      axios.get(series + this.message)
       .then((response) => {
-      const content = response.data.results;
-      this.film = content
+      const seriescontent = response.data.results;
+      this.series = seriescontent
       });
     },
+    async function(){
+     const function1 = await axios();
+
+     const function2 = await axios();
+   },
     getScore: function (val) {
       return val.toFixed(0);
     },
