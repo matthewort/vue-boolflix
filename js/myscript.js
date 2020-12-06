@@ -10,6 +10,8 @@ const film = 'https://api.themoviedb.org/3/search/movie?api_key=adb9c0293cfa47b8
 
 const series = 'https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&language=it_IT&query=';
 
+const baseimage = 'https://image.tmdb.org/t/p/w342';
+
 var app = new Vue({
   el: '#app',
   data: {
@@ -32,11 +34,9 @@ var app = new Vue({
       this.series = seriescontent
       });
     },
-    async function(){
-     const function1 = await axios();
-
-     const function2 = await axios();
-   },
+    firstimage: function () {
+      return this.baseimage;
+    },
     getScore: function (val) {
       return val.toFixed(0);
     },
