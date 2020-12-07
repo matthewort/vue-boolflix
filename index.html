@@ -11,24 +11,29 @@
   <body>
 
     <div id="app">
+
+      <header>
       <nav class="navleft">
         <h1>BOOLFLIX</h1>
       </nav>
 
       <nav class="navright">
         <input class="searchbar" v-model="message" @keyup.enter="addseries();addfilm()" placeholder="Search">
-        <i class="fas fa-search" @click="addseries();addfilm();restimage()"></i>
+        <i class="fas fa-search" @click="addseries();addfilm()"></i>
       </nav>
       <div class="container">
+        </header>
+
 
         <!-- FILM -->
         <div v-for="poster in film">
 
           <div class="films">
             <div>
-              <img :src="'https://image.tmdb.org/t/p/w342' + poster.poster_path" alt="">
+              <!-- <img :src="'https://image.tmdb.org/t/p/w342' + poster.poster_path"> -->
+              <!-- <div :style="{'background-image':'url(https://i.pinimg.com/originals/20/9c/04/209c046ce0a349cb24b94c627180655e.jpg)'}"> -->
+                <div :style="{'background-image':'url(https://image.tmdb.org/t/p/w342) + poster.poster_path'}">
               <!-- <img :src="'firstimage()' + poster.poster_path" alt=""> --> <!-- perché non funziona? -->
-              <!-- {{firstimage()}}{{poster.poster_path}} -->
               <br>
               {{poster.title}}
               <br>
@@ -78,7 +83,7 @@
               <div v-else>
               <i class="fas fa-flag"></i>
               </div>
-
+              </div>
             </div>
           </div>
 
