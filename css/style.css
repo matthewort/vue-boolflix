@@ -6,12 +6,17 @@
 
 body {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-color: #2F4F4F;
+  text-align: center;
+}
+
+header {
+  height: 80px;
 }
 
 .navleft {
-  height: 80px;
+  height: 100%;
   width: 50%;
   background-color: #080808;
   float: left;
@@ -28,7 +33,7 @@ body {
 }
 
 .navright {
-  height: 80px;
+  height: 100%;
   width: 50%;
   background-color: #080808;
   float: left;
@@ -64,11 +69,59 @@ body {
   padding-right: 10px;
 }
 
-.container p {
-  /* border: 1px solid black; */
-}
-
 #flag {
   height: 20px;
   width: 20px;
 }
+
+.container {
+  height: calc(100% - 80px);
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.movies {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movies div {
+  margin: 20px 20px;
+}
+
+.television {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.television div {
+  margin: 20px 20px;
+}
+
+
+/* .movies {
+   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-gap: 20px;
+  width:  calc(100% - 80px);
+} */
+
+/* .movies {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
+}
+
+.television {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
+} */
