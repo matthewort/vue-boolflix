@@ -29,12 +29,20 @@
 
         <div class="movies">
               <div v-for="poster in film">
-                <img :src="'https://image.tmdb.org/t/p/w342' + poster.poster_path">
+                <div v-if="poster.poster_path === null">
+                  <!-- <img src="https://image.tmdb.org/t/p/w342/lB0QmvDN7GDpNzDYDS3hVbuDtSl.jpg" alt=""> -->
+                  <img src="img/cinema_logo.png" alt="">
+                  </div>
+                  <div v-else=>
+                  <img class="immagine" :src="'https://image.tmdb.org/t/p/w342' + poster.poster_path">
+                  </div>
+
                 <!-- <div :style="{'background-image':'url(https://i.pinimg.com/originals/20/9c/04/209c046ce0a349cb24b94c627180655e.jpg)'}"> -->
                   <!-- <div :style="{'background-image':'url(https://image.tmdb.org/t/p/w342) + poster.poster_path'}"> -->
                 <!-- <img :src="'firstimage()' + poster.poster_path" alt=""> --> <!-- perché non funziona? -->
                 <div>{{poster.title}}</div>
                 <div>{{poster.original_title}}</div>
+                <!-- <div>Overview:{{poster.overview}}</div> -->
 
                 <div>
                 <i v-for="(star, index) in 5" class="fa-star" :class="(index < Math.round(poster.vote_average / 2))?'fas':'far'"></i>
@@ -89,7 +97,12 @@
         <div class="television">
 
           <div v-for="tv in series">
-            <img :src="'https://image.tmdb.org/t/p/w342' + tv.poster_path">
+              <div v-if="tv.poster_path === null">
+                <img src="https://image.tmdb.org/t/p/w342/lB0QmvDN7GDpNzDYDS3hVbuDtSl.jpg" alt="">
+                </div>
+                <div v-else=>
+                <img class="immagine" :src="'https://image.tmdb.org/t/p/w342' + tv.poster_path">
+                </div>
               <div>{{tv.name}}</div>
               <div>{{tv.original_name}}</div>
 
