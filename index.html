@@ -98,7 +98,7 @@
 
           <div v-for="tv in series">
               <div v-if="tv.poster_path === null">
-                <img src="https://image.tmdb.org/t/p/w342/lB0QmvDN7GDpNzDYDS3hVbuDtSl.jpg" alt="">
+                <img src="img/cinema_logo.png" alt="">
                 </div>
                 <div v-else=>
                 <img class="immagine" :src="'https://image.tmdb.org/t/p/w342' + tv.poster_path">
