@@ -102,6 +102,8 @@ header {
 .immagine {
   min-height: 513px;
   min-width: 342px;
+  max-height: 513px;
+  max-width: 342px;
 }
 
 .movies div {
