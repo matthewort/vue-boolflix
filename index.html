@@ -28,81 +28,48 @@
         <!-- FILM -->
 
         <div class="movies">
-              <div v-for="poster in film">
+              <div v-for="poster in film" class="boximage">
+                
                 <div v-if="poster.poster_path === null">
                   <!-- <img src="https://image.tmdb.org/t/p/w342/lB0QmvDN7GDpNzDYDS3hVbuDtSl.jpg" alt=""> -->
                   <img class="immagine" src="img/cinema_logo.png" alt="">
                   </div>
-                  <div v-else=>
+                  <div v-else>
                   <img class="immagine" :src="'https://image.tmdb.org/t/p/w342' + poster.poster_path">
                   </div>
 
                 <!-- <div :style="{'background-image':'url(https://i.pinimg.com/originals/20/9c/04/209c046ce0a349cb24b94c627180655e.jpg)'}"> -->
                   <!-- <div :style="{'background-image':'url(https://image.tmdb.org/t/p/w342) + poster.poster_path'}"> -->
                 <!-- <img :src="'firstimage()' + poster.poster_path" alt=""> --> <!-- perché non funziona? -->
+            <div class="description">
                 <div>{{poster.title}}</div>
                 <div>{{poster.original_title}}</div>
+              
                 <!-- <div>Overview:{{poster.overview}}</div> -->
 
-                <div>
-                <i v-for="(star, index) in 5" class="fa-star" :class="(index < Math.round(poster.vote_average / 2))?'fas':'far'"></i>
-                <!-- Perché non posso semplicemente mettere "star in 5"? -->
-                </div>
+              <div>
+              <i v-for="(star, index) in 5" class="fa-star" :class="(index < Math.round(poster.vote_average / 2))?'fas':'far'"></i>
+              <!-- Perché non posso semplicemente mettere "star in 5"? -->
+              </div>
 
-                <div v-if="poster.original_language === 'en'">
-                <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197374.svg" alt="">
-                </div>
-
-                <div v-else-if="poster.original_language === 'ja'">
-                <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197604.svg" alt="">
-                </div>
-
-                <div v-else-if="poster.original_language === 'it'">
-                <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197626.svg" alt="">
-                </div>
-
-                <div v-else-if="poster.original_language === 'de'">
-                <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197571.svg" alt="">
-                </div>
-
-                <div v-else-if="poster.original_language === 'fr'">
-                <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197560.svg" alt="">
-                </div>
-
-                <div v-else-if="poster.original_language === 'pt'">
-                <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197463.svg" alt="">
-                </div>
-
-                <div v-else-if="poster.original_language === 'es'">
-                <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197593.svg" alt="">
-                </div>
-
-                <div v-else-if="poster.original_language === 'ru'">
-                <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197408.svg" alt="">
-                </div>
-
-                <div v-else-if="poster.original_language === 'ko'">
-                <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197582.svg" alt="">
-                </div>
-
-                <div v-else>
-                <i class="fas fa-flag"></i>
-                </div>
-
+                <div v-html="getFlag(poster.original_language)"></div>
               </div> <!-- fine ciclo -->
+            </div> <!-- fine description -->
+            
         </div> <!-- fine movies -->
         <!-- FINE FILM -->
 
         <!-- SERIE -->
         <div class="television">
 
-          <div v-for="tv in series">
+          <div v-for="tv in series" class="boximage">
               <div v-if="tv.poster_path === null">
                 <img class="immagine" src="img/cinema_logo.png" alt="">
                 </div>
                 <div v-else=>
                 <img class="immagine" :src="'https://image.tmdb.org/t/p/w342' + tv.poster_path">
                 </div>
+            <div class="description">
               <div>{{tv.name}}</div>
               <div>{{tv.original_name}}</div>
 
@@ -110,48 +77,11 @@
               <i v-for="(star, index) in 5" class="fa-star" :class="(index < Math.round(tv.vote_average / 2))?'fas':'far'"></i>
               </div>
 
-              <!-- {{poster.original_language}} -->
-              <div v-if="tv.original_language === 'en'">
-              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197374.svg" alt="">
-              </div>
-
-              <div v-else-if="tv.original_language === 'ja'">
-              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197604.svg" alt="">
-              </div>
-
-              <div v-else-if="tv.original_language === 'it'">
-              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197626.svg" alt="">
-              </div>
-
-              <div v-else-if="tv.original_language === 'de'">
-              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197571.svg" alt="">
-              </div>
-
-              <div v-else-if="tv.original_language === 'fr'">
-              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197560.svg" alt="">
-              </div>
-
-              <div v-else-if="tv.original_language === 'pt'">
-              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197463.svg" alt="">
-              </div>
-
-              <div v-else-if="tv.original_language === 'es'">
-              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197593.svg" alt="">
-              </div>
-
-              <div v-else-if="tv.original_language === 'ru'">
-              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197408.svg" alt="">
-              </div>
-
-              <div v-else-if="tv.original_language === 'ko'">
-              <img id="flag" src="https://www.flaticon.com/svg/static/icons/svg/197/197582.svg" alt="">
-              </div>
-
-              <div v-else>
-              <i class="fas fa-flag"></i>
+              <div v-html="getFlag(tv.original_language)"></div>
               </div>
 
           </div> <!-- fine ciclo -->
+        </div> <!-- fine description -->
         </div> <!-- fine television -->
         <!-- FINE SERIE -->
       </div>

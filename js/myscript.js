@@ -5,33 +5,50 @@
 //
 // Allarghiamo poi la ricerca anche alle serie tv. Con la stessa azione di ricerca dovremo prendere sia i film che corrispondono alla query, sia le serie tv, stando attenti ad avere alla fine dei valori simili (le serie e i film hanno campi nel JSON di risposta diversi, simili ma non sempre identici)
 
+const film =
+  "https://api.themoviedb.org/3/search/movie?api_key=adb9c0293cfa47b8f7f8199da349031d&language=it-IT&query=";
 
-const film = 'https://api.themoviedb.org/3/search/movie?api_key=adb9c0293cfa47b8f7f8199da349031d&language=it-IT&query=';
+const series =
+  "https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&language=it_IT&query=";
 
-const series = 'https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&language=it_IT&query=';
-
-const baseimage = 'https://image.tmdb.org/t/p/w342';
+const baseimage = "https://image.tmdb.org/t/p/w342";
 
 var app = new Vue({
-  el: '#app',
+  el: "#app",
   data: {
     film: [],
     series: [],
-    message: ''
+    message: "",
+    languages: {
+      en: "https://www.flaticon.com/svg/static/icons/svg/197/197374.svg",
+      ja: "https://www.flaticon.com/svg/static/icons/svg/197/197604.svg",
+      it: "https://www.flaticon.com/svg/static/icons/svg/197/197626.svg",
+      de: "https://www.flaticon.com/svg/static/icons/svg/197/197571.svg",
+      fr: "https://www.flaticon.com/svg/static/icons/svg/197/197560.svg",
+      pt: "https://www.flaticon.com/svg/static/icons/svg/197/197463.svg",
+      es: "https://www.flaticon.com/svg/static/icons/svg/197/197593.svg",
+      ru: "https://www.flaticon.com/svg/static/icons/svg/197/197408.svg",
+      ko: "https://www.flaticon.com/svg/static/icons/svg/197/197582.svg",
+    },
   },
   methods: {
+    getFlag: function (lang) {
+      if (this.languages[lang]) {
+        return `<img id="flag" src="${this.languages[lang]}" alt="">`;
+      } else {
+        return `<i class="fas fa-flag"></i>`;
+      }
+    },
     addfilm: function () {
-      axios.get(film + this.message)
-      .then((response) => {
-      const filmcontent = response.data.results;
-      this.film = filmcontent
+      axios.get(film + this.message).then((response) => {
+        const filmcontent = response.data.results;
+        this.film = filmcontent;
       });
     },
     addseries: function () {
-      axios.get(series + this.message)
-      .then((response) => {
-      const seriescontent = response.data.results;
-      this.series = seriescontent
+      axios.get(series + this.message).then((response) => {
+        const seriescontent = response.data.results;
+        this.series = seriescontent;
       });
     },
     firstimage: function () {
@@ -41,12 +58,12 @@ var app = new Vue({
       return val.toFixed(0);
     },
     addthing: function () {
-      if (this.message === '') {
-        this.message = ''
+      if (this.message === "") {
+        this.message = "";
       } else {
-      this.film.push(this.message)  //faccio in modo che quando qualcuno scrive qualcosa nell'input venga poi pushato nell'array film
-      this.message = ''  //faccio in modo che una volta scritta la parola nell'input e poi cliccata, venga poi rimossa dalla barra di input
+        this.film.push(this.message); //faccio in modo che quando qualcuno scrive qualcosa nell'input venga poi pushato nell'array film
+        this.message = ""; //faccio in modo che una volta scritta la parola nell'input e poi cliccata, venga poi rimossa dalla barra di input
       }
-    }
-  }
+    },
+  },
 });

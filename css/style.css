@@ -7,7 +7,7 @@
 body {
   height: 100vh;
   width: 100%;
-  background-color: #2F4F4F;
+  background-color: #2f4f4f;
   text-align: center;
 }
 
@@ -97,10 +97,10 @@ header {
 }
 
 .movies {
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  position:relative;
+  position: relative;
 }
 
 .immagine {
@@ -110,25 +110,66 @@ header {
   max-width: 342px;
 }
 
-.immagine:hover {
+/* .immagine:hover {
   min-height: 533px;
   min-width: 362px;
   max-height: 533px;
   max-width: 362px;
   transition: 0.2s;
   opacity: 0.1;
-}
+} */
 
 .movies div {
   margin: 20px 20px;
 }
 
 .television {
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .television div {
   margin: 20px 20px;
+}
+
+.description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-around; */
+  opacity: 0;
+  transition: opacity 0.25s;
+  /* border-radius: 20px; */
+}
+
+.description > * {
+  transform: translateY(20px);
+  transition: transform 0.25s;
+}
+
+.description:hover > * {
+  transform: translateY(0);
+}
+
+.description:hover {
+  opacity: 1;
+}
+
+.boximage {
+  color: black;
+  position: relative;
+  margin-bottom: 50px;
+  transition: all 0.2s ease-in-out;
+}
+
+.boximage:hover {
+  transform: scale(1.1);
 }
