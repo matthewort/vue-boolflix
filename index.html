@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>BOOLFLIX</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
@@ -13,48 +13,54 @@
     <div id="app">
 
       <header>
-      <nav class="navleft">
-        <h1 id="boolflix">BOOLFLIX</h1>
-      </nav>
+        <nav class="navleft">
+          <img id="boolflix" onClick="window.location.reload();" src="img/boolflix_logo1.png" alt="">
+        </nav>
 
-      <nav class="navright">
-        <input class="searchbar" v-model="message" @keyup.enter="addseries();addfilm();addthing()" placeholder="Search">
-        <i class="fas fa-search" @click="addseries();addfilm();addthing()"></i>
-      </nav>
+        <nav class="navright">
+          <input class="searchbar" v-model="message" @keyup.enter="addseries();addfilm();addthing()" placeholder="Search">
+          <i class="fas fa-search" @click="addseries();addfilm();addthing()"></i>
+        </nav>
       </header>
 
       <div class="container">
 
         <!-- FILM -->
-
         <div class="movies">
-              <div v-for="poster in film" class="boximage">
-                
-                <div v-if="poster.poster_path === null">
-                  <!-- <img src="https://image.tmdb.org/t/p/w342/lB0QmvDN7GDpNzDYDS3hVbuDtSl.jpg" alt=""> -->
-                  <img class="immagine" src="img/cinema_logo.png" alt="">
-                  </div>
-                  <div v-else>
-                  <img class="immagine" :src="'https://image.tmdb.org/t/p/w342' + poster.poster_path">
-                  </div>
 
-                <!-- <div :style="{'background-image':'url(https://i.pinimg.com/originals/20/9c/04/209c046ce0a349cb24b94c627180655e.jpg)'}"> -->
-                  <!-- <div :style="{'background-image':'url(https://image.tmdb.org/t/p/w342) + poster.poster_path'}"> -->
-                <!-- <img :src="'firstimage()' + poster.poster_path" alt=""> --> <!-- perché non funziona? -->
+          <div v-for="poster in film" class="boximage">  
+
+            <div v-if="poster.poster_path === null">         
+              <img class="immagine" src="img/cinema_logo1.png" alt="">
+            </div>
+
+            <div v-else>
+              <img class="immagine" :src="'https://image.tmdb.org/t/p/w342' + poster.poster_path">
+            </div>
+
+            
             <div class="description">
-                <div>{{poster.title}}</div>
-                <div>{{poster.original_title}}</div>
-              
-                <!-- <div>Overview:{{poster.overview}}</div> -->
-
+              <div class="text">{{poster.title}}</div>
+              <div class="text">{{poster.original_title}}</div>
+                
               <div>
               <i v-for="(star, index) in 5" class="fa-star" :class="(index < Math.round(poster.vote_average / 2))?'fas':'far'"></i>
-              <!-- Perché non posso semplicemente mettere "star in 5"? -->
               </div>
 
-                <div v-html="getFlag(poster.original_language)"></div>
-              </div> <!-- fine ciclo -->
+              <div id="flag" v-html="getFlag(poster.original_language)"></div>
+
+             <!-- FILM overview -->
+             <div class="overview">
+              <p v-if="poster.overview === '' ">
+                <strong>Overview:</strong> COMING SOON
+              </p>
+              <p v-else><strong>Overview:</strong> {{poster.overview}}</p>
+            </div>
+          </div>
+
             </div> <!-- fine description -->
+          </div> <!-- fine ciclo -->
+          
             
         </div> <!-- fine movies -->
         <!-- FINE FILM -->
@@ -63,28 +69,38 @@
         <div class="television">
 
           <div v-for="tv in series" class="boximage">
-              <div v-if="tv.poster_path === null">
-                <img class="immagine" src="img/cinema_logo.png" alt="">
-                </div>
-                <div v-else=>
-                <img class="immagine" :src="'https://image.tmdb.org/t/p/w342' + tv.poster_path">
-                </div>
+
+            <div v-if="tv.poster_path === null">
+              <img class="immagine" src="img/cinema_logo1.png" alt="">
+            </div>
+            <div v-else=>
+              <img class="immagine" :src="'https://image.tmdb.org/t/p/w342' + tv.poster_path">
+            </div>
+
             <div class="description">
-              <div>{{tv.name}}</div>
-              <div>{{tv.original_name}}</div>
+              <div class="text">{{tv.name}}</div>
+              <div class="text">{{tv.original_name}}</div>
 
               <div>
               <i v-for="(star, index) in 5" class="fa-star" :class="(index < Math.round(tv.vote_average / 2))?'fas':'far'"></i>
               </div>
 
               <div v-html="getFlag(tv.original_language)"></div>
-              </div>
 
+              <!-- SERIE overview -->
+             <div class="overview">
+              <p v-if="tv.overview === '' ">
+                <strong>Overview:</strong> COMING SOON
+              </p>
+              <p v-else><strong>Overview:</strong> {{tv.overview}}</p>
+            </div>
+          </div>
+
+            </div> <!-- fine description -->
           </div> <!-- fine ciclo -->
-        </div> <!-- fine description -->
         </div> <!-- fine television -->
         <!-- FINE SERIE -->
-      </div>
+      </div> 
     </div>
 
 

@@ -7,7 +7,16 @@
 body {
   height: 100vh;
   width: 100%;
-  background-color: #2f4f4f;
+
+  background: rgb(24, 24, 27);
+  background: linear-gradient(
+    90deg,
+    rgba(24, 24, 27, 1) 10%,
+    rgba(82, 156, 98, 1) 30%,
+    rgba(82, 134, 156, 1) 70%,
+    rgba(24, 24, 27, 1) 90%
+  );
+
   text-align: center;
 }
 
@@ -15,8 +24,16 @@ header {
   height: 80px;
 }
 
+.text {
+  font-size: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 100;
+}
+
 #boolflix {
   cursor: pointer;
+  margin-left: 10%;
+  height: 50px;
 }
 
 .movies i {
@@ -30,7 +47,7 @@ header {
 .navleft {
   height: 100%;
   width: 50%;
-  background-color: #080808;
+  background-color: #18181b;
   float: left;
   display: flex;
   justify-content: flex-start;
@@ -47,7 +64,7 @@ header {
 .navright {
   height: 100%;
   width: 50%;
-  background-color: #080808;
+  background-color: #18181b;
   float: left;
   display: flex;
   justify-content: flex-end;
@@ -59,7 +76,7 @@ header {
   width: 50px;
   font-size: 30px;
   padding-top: 10px;
-  background-color: white;
+  /* background-color: white; */
   color: lightgrey;
   margin-right: 10%;
   display: flex;
@@ -73,17 +90,23 @@ header {
 }
 
 .searchbar {
-  height: 60%;
-  width: 15%;
+  height: 45px;
+  width: 235px;
   border: transparent;
+  outline: none;
   font-size: 20px;
   padding-left: 10px;
   padding-right: 10px;
+  border-radius: 10px;
 }
 
 #flag {
-  height: 20px;
-  width: 20px;
+  height: 40px;
+  width: 40px;
+}
+
+.fa-star {
+  font-size: 20px;
 }
 
 .container {
@@ -110,15 +133,6 @@ header {
   max-width: 342px;
 }
 
-/* .immagine:hover {
-  min-height: 533px;
-  min-width: 362px;
-  max-height: 533px;
-  max-width: 362px;
-  transition: 0.2s;
-  opacity: 0.1;
-} */
-
 .movies div {
   margin: 20px 20px;
 }
@@ -144,10 +158,8 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-around; */
   opacity: 0;
   transition: opacity 0.25s;
-  /* border-radius: 20px; */
 }
 
 .description > * {
@@ -172,4 +184,36 @@ header {
 
 .boximage:hover {
   transform: scale(1.1);
+}
+
+.overview {
+  width: 90%;
+  height: 140px;
+  overflow-y: scroll;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.button > button {
+  padding: 12px;
+  border-radius: 50px;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  height: 50px;
+  width: 120px;
+  opacity: 1;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: silver 1px solid;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: white;
+}
+.details,
+.button {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }

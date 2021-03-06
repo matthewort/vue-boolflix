@@ -36,7 +36,7 @@ var app = new Vue({
       if (this.languages[lang]) {
         return `<img id="flag" src="${this.languages[lang]}" alt="">`;
       } else {
-        return `<i class="fas fa-flag"></i>`;
+        return ``;
       }
     },
     addfilm: function () {
@@ -57,6 +57,7 @@ var app = new Vue({
     getScore: function (val) {
       return val.toFixed(0);
     },
+
     addthing: function () {
       if (this.message === "") {
         this.message = "";
